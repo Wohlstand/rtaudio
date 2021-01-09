@@ -4,7 +4,7 @@
 
 A set of C++ classes that provide a common API for realtime audio input/output across Linux (native ALSA, JACK, PulseAudio and OSS), Macintosh OS X (CoreAudio and JACK), and Windows (DirectSound, ASIO and WASAPI) operating systems.
 
-By Gary P. Scavone, 2001-2017 (and many other developers!)
+By Gary P. Scavone, 2001-2019 (and many other developers!)
 
 This distribution of RtAudio contains the following:
 
@@ -35,31 +35,4 @@ For complete documentation on RtAudio, see the doc directory of the distribution
 
 ## Legal and ethical:
 
-The RtAudio license is similar to the MIT License.
-
-    RtAudio: a set of realtime audio i/o C++ classes
-    Copyright (c) 2001-2017 Gary P. Scavone
-
-    Permission is hereby granted, free of charge, to any person
-    obtaining a copy of this software and associated documentation files
-    (the "Software"), to deal in the Software without restriction,
-    including without limitation the rights to use, copy, modify, merge,
-    publish, distribute, sublicense, and/or sell copies of the Software,
-    and to permit persons to whom the Software is furnished to do so,
-    subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be
-    included in all copies or substantial portions of the Software.
-
-    Any person wishing to distribute modifications to the Software is
-    asked to send the modifications to the original developer so that
-    they can be incorporated into the canonical version.  This is,
-    however, not a binding provision of this license.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
-    ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-    CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-    WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+The RtAudio license is similar to the MIT License.  Please see [LICENSE](LICENSE).
