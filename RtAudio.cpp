@@ -53,6 +53,7 @@
 
 #if defined(_WIN32)
 #include <windows.h>
+#include <winerror.h>
 #endif
 
 using namespace rt::audio;
@@ -7006,15 +7007,15 @@ bool RtApiDs :: probeDeviceOpen( unsigned int deviceId, StreamMode mode, unsigne
     unsigned threadId;
     stream_.callbackInfo.isRunning = true;
     stream_.callbackInfo.object = (void *) this;
-    stream_.callbackInfo.thread = _beginthreadex( NULL, 0, &callbackHandler,
-                                                  &stream_.callbackInfo, 0, &threadId );
-    if ( stream_.callbackInfo.thread == 0 ) {
+    PTHREAD_GET_PTR(stream_.callbackInfo.thread) = _beginthreadex( NULL, 0, &callbackHandler,
+                                                                   &stream_.callbackInfo, 0, &threadId );
+    if ( PTHREAD_GET_PTR(stream_.callbackInfo.thread) == 0 ) {
       errorText_ = "RtApiDs::probeDeviceOpen: error creating callback thread!";
       goto error;
     }
 
     // Boost DS thread priority
-    SetThreadPriority( (HANDLE) stream_.callbackInfo.thread, THREAD_PRIORITY_HIGHEST );
+    SetThreadPriority( (HANDLE) PTHREAD_GET_PTR(stream_.callbackInfo.thread), THREAD_PRIORITY_HIGHEST );
   }
   return SUCCESS;
 
@@ -7063,8 +7064,8 @@ void RtApiDs :: closeStream()
 
   // Stop the callback thread.
   stream_.callbackInfo.isRunning = false;
-  WaitForSingleObject( (HANDLE) stream_.callbackInfo.thread, INFINITE );
-  CloseHandle( (HANDLE) stream_.callbackInfo.thread );
+  WaitForSingleObject( (HANDLE) PTHREAD_GET_PTR(stream_.callbackInfo.thread), INFINITE );
+  CloseHandle( (HANDLE) PTHREAD_GET_PTR(stream_.callbackInfo.thread) );
 
   DsHandle *handle = (DsHandle *) stream_.apiHandle;
   if ( handle ) {

@@ -679,6 +679,13 @@ namespace rt::audio {
   typedef pthread_mutex_t StreamMutex;
 }
 
+// Workaround for the vanilla MinGW
+#if defined(__WINPTHREADS_VERSION)
+  #define PTHREAD_GET_PTR(y) (y)
+#else
+  #define PTHREAD_GET_PTR(y) (y.x)
+#endif
+
 #endif
 
 // Setup for "dummy" behavior if no apis specified.
