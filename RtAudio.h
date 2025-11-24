@@ -85,7 +85,8 @@
 #include <functional>
 #include <memory>
 
-namespace rt::audio {
+namespace rt {
+namespace audio {
 
 /*! \typedef typedef unsigned long RtAudioFormat;
     \brief RtAudio data format type.
@@ -650,7 +651,8 @@ class RTAUDIO_DLL_PUBLIC RtAudio
   std::shared_ptr<RtApi> rtapi_;
 };
 
-}
+} // audio
+} // rt
 
 // Operating system dependent thread functionality.
 #if defined(_MSC_VER)
@@ -674,10 +676,12 @@ inline namespace audio {
   // Using pthread library for various flavors of unix.
   #include <pthread.h>
 
-namespace rt::audio {
+namespace rt {
+namespace audio {
   typedef pthread_t ThreadHandle;
   typedef pthread_mutex_t StreamMutex;
-}
+} // audio
+} // rt
 
 // Workaround for the vanilla MinGW
 #if defined(__WINPTHREADS_VERSION)
@@ -697,7 +701,8 @@ namespace rt::audio {
 
 #endif
 
-namespace rt::audio {
+namespace rt {
+namespace audio {
 
 // This global structure type is used to pass callback information
 // between the private RtAudio stream structure and global callback
@@ -757,7 +762,8 @@ class S24 {
 };
 #pragma pack(pop)
 
-}
+} // audio
+} // rt
 
 #if defined( HAVE_GETTIMEOFDAY )
   #include <sys/time.h>
@@ -765,7 +771,8 @@ class S24 {
 
 #include <sstream>
 
-namespace rt::audio {
+namespace rt {
+namespace audio {
 
 class RTAUDIO_DLL_PUBLIC RtApi
 {
@@ -952,7 +959,8 @@ inline void RtAudio :: setStreamTime( double time ) { return rtapi_->setStreamTi
 inline void RtAudio :: setErrorCallback( RtAudioErrorCallback errorCallback ) { rtapi_->setErrorCallback( errorCallback ); }
 inline void RtAudio :: showWarnings( bool value ) { rtapi_->showWarnings( value ); }
 
-}
+} // audio
+} // rt
 
 #endif
 
